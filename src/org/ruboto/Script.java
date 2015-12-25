@@ -16,7 +16,7 @@ import android.content.res.AssetManager;
 import android.os.Environment;
 
 public class Script {
-    private static String[] scriptsDir = new String[]{"scripts"};
+    private static String[] scriptsDir = new String[]{"/storage/emulated/0/code/PocketRIDE/src"};
 
     private final String name;
 
