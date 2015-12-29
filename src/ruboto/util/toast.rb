@@ -7,7 +7,7 @@
 #######################################################
 
 Java::android.content.Context.class_eval do
-  def toast(text, duration=Java::android.widget.Toast::LENGTH_SHORT)
+  def toast(text, duration=Java::android.widget.Toast::LENGTH_LONG)
     Java::android.widget.Toast.makeText(self, text, duration).show
   end
 
