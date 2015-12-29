@@ -17,15 +17,7 @@ class PocketrideActivity
     super
     request_window_feature android.view.Window::FEATURE_NO_TITLE
 
-    self.content_view = 
-        linear_layout :orientation => :vertical do
-          @text_view = text_view :text => 'What hath Matz wrought?', :id => 42, 
-                                 :layout => {:width => :match_parent},
-                                 :gravity => :center, :text_size => 48.0
-          button :text => 'M-x butterfly', 
-                 :layout => {:width => :match_parent},
-                 :id => 43, :on_click_listener => proc { butterfly }
-        end
+    self.content_view = R.layout.main
   rescue Exception
     log_e $!.backtrace.join("\n")
     log_e "Exception creating activity: #{$!}"
@@ -33,10 +25,5 @@ class PocketrideActivity
   end
 
   private
-
-  def butterfly
-    @text_view.text = 'What hath Matz wrought!'
-    toast 'Flipped a bit via butterfly'
-  end
 
 end
