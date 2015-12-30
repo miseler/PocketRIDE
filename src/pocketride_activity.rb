@@ -37,6 +37,12 @@ rescue Exception
   log_e "Exception creating System.out&err logging: #{$!}"
 end
 
+def id(sym)
+  find_view_by_id(R.id.send sym.to_sym)
+end
+
+$file_path = "/storage/emulated/0/code/PocketRIDE/src/pocketride_activity.rb"
+
 class PocketrideActivity
   def on_create(bundle)
     super
@@ -44,16 +50,24 @@ class PocketrideActivity
     request_window_feature android.view.Window::FEATURE_NO_TITLE
     self.content_view = R.layout.main
     
-    find_view_by_id(R.id.button_load).set_on_click_listener do
+    id(:button_load).set_on_click_listener do
       toast "LOAD!!!"
     end
-    find_view_by_id(R.id.button_save).set_on_click_listener do
+    id(:button_save).set_on_click_listener do
       toast "SAVE!!!"
     end
-    
-  rescue Exception
-    log_e $!.backtrace.join("\n")
-    log_e "Exception creating activity: #{$!}"
-    toast "LOGGED ERROR!"
+  end
+
+  def on_pause
+    super
+    log "on_pause"
+    File.open($file_path, 'w') {|f| f.write id(:editor).text}
+  end
+  
+  def on_resume
+    super
+    log "on_resume"
+    id(:editor).text = File.open $file_path, &:read
   end
 end
+
