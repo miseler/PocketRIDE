@@ -20,14 +20,15 @@
 		style="?android:attr/buttonBarStyle"
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:orientation="horizontal"
-		android:id="@+id/button_bar">
+		android:orientation="horizontal">
 
 		<Button
 			style="?android:attr/buttonStyleSmall"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Load"/>
+			android:text="Load"
+      android:id="@+id/button_load"/>
+      
 
 		<View
 			android:background="?android:attr/dividerHorizontal"
@@ -44,12 +45,13 @@
 			android:background="?android:attr/dividerHorizontal"
 			android:layout_height="match_parent"
 			android:layout_width="1dp"/>
-
+      
 		<Button
 			style="?android:attr/buttonStyleSmall"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Save"/>
+			android:text="Save"
+			android:id="@+id/button_save"/>
 
 	</LinearLayout>
 
