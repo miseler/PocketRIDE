@@ -27,12 +27,20 @@ class PocketrideActivity
     super
     log "on_pause"
     File.open($file_path, 'w') {|f| f.write id(:editor).text}
+    finish
   end
   
   def on_resume
     super
     log "on_resume"
     id(:editor).text = File.open $file_path, &:read
+  end
+  
+  def on_destroy
+    super
+    log "on_destroy"
+    # TODO: remove this for releases
+    android.os.Process.kill_process android.os.Process.my_pid
   end
 end
 
